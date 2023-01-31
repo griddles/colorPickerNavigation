@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".MainActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="150dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.skydoves.colorpickerview.ColorPickerView
+                android:id="@+id/colorPickerView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="80dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.skydoves.colorpickerview.sliders.AlphaSlideBar
+                android:id="@+id/alphaSlider"
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="-128dp"
+                android:rotation="-90"
+                app:borderColor_AlphaSlideBar="@android:color/darker_gray"
+                app:borderSize_AlphaSlideBar="5"
+                app:layout_constraintBottom_toBottomOf="@+id/colorPickerView"
+                app:layout_constraintStart_toEndOf="@+id/colorPickerView"
+                app:layout_constraintTop_toTopOf="@+id/colorPickerView"
+                app:selector_AlphaSlideBar="@drawable/wheel" />
+
+            <com.skydoves.colorpickerview.sliders.BrightnessSlideBar
+                android:id="@+id/brightnessSlider"
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="-264dp"
+                android:rotation="-90"
+                app:borderColor_BrightnessSlider="@android:color/darker_gray"
+                app:borderSize_BrightnessSlider="5"
+                app:layout_constraintBottom_toBottomOf="@+id/colorPickerView"
+                app:layout_constraintStart_toEndOf="@+id/alphaSlider"
+                app:layout_constraintTop_toTopOf="@+id/colorPickerView"
+                app:selector_BrightnessSlider="@drawable/wheel" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/screenshotLayout"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+            <com.skydoves.colorpickerview.AlphaTileView
+                android:id="@+id/alphaTileView"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginEnd="308dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tileEvenColor="@color/tileEvenColor"
+                app:tileOddColor="@color/tileOddColor"
+                app:tileSize="16" />
+
+            <TextView
+                android:id="@+id/hexCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="monospace"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/copyHex"
+                app:layout_constraintStart_toEndOf="@+id/copyHex"
+                app:layout_constraintTop_toTopOf="@+id/copyHex"
+                tools:text="#aarrggbb" />
+
+            <TextView
+                android:id="@+id/rgbCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="monospace"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/copyRGB"
+                app:layout_constraintStart_toEndOf="@+id/copyRGB"
+                app:layout_constraintTop_toTopOf="@+id/copyRGB"
+                tools:text="aaa-rrr-ggg-bbb" />
+
+            <ImageView
+                android:id="@+id/copyRGB"
+                android:layout_width="38dp"
+                android:layout_height="31dp"
+                android:layout_marginTop="4dp"
+                android:contentDescription="Copy RGB Value to Clipboard"
+                app:layout_constraintEnd_toEndOf="@+id/copyHex"
+                app:layout_constraintStart_toStartOf="@+id/copyHex"
+                app:layout_constraintTop_toBottomOf="@+id/copyHex"
+                app:srcCompat="@drawable/copy_ico" />
+
+            <ImageView
+                android:id="@+id/copyHex"
+                android:layout_width="38dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="8dp"
+                android:contentDescription="Copy Hex Value to Clipboard"
+                app:layout_constraintBottom_toBottomOf="@+id/alphaTileView"
+                app:layout_constraintStart_toEndOf="@+id/alphaTileView"
+                app:layout_constraintTop_toTopOf="@+id/alphaTileView"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/copy_ico" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/editHexCode"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="172dp"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:inputType="textPersonName"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/screenshotLayout"
+            tools:text="#aarrggbb" />
+
+        <Button
+            android:id="@+id/applyHexCode"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:text="Apply"
+            app:layout_constraintBottom_toBottomOf="@+id/editHexCode"
+            app:layout_constraintStart_toEndOf="@+id/editHexCode"
+            app:layout_constraintTop_toTopOf="@+id/editHexCode" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
