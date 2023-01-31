@@ -11,10 +11,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import com.example.colorpickernavigation.databinding.FragmentHomeBinding
 import com.example.colorpickernavigation.model.SharedViewModel
-import com.example.colorpickernavigation.ui.palette.PaletteFragment
 import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
 
 class HomeFragment : Fragment() {
@@ -27,8 +26,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val sharedViewModel =
-            ViewModelProvider(this).get(SharedViewModel::class.java)
+        val sharedViewModel: SharedViewModel by activityViewModels()
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -44,11 +42,15 @@ class HomeFragment : Fragment() {
         val copyRGB = binding.copyRGB
         val editHexCode = binding.editHexCode
         val applyHexCode = binding.applyHexCode
+        var listenerRan = false
+
+//        val color = Color.parseColor(sharedViewModel.getHex())
+//        colorPickerView.selectByHsvColor(color)
 
         // listener that is called each time a new color is selected
         colorPickerView.setColorListener(ColorEnvelopeListener
         { _, _ ->
-            // attach the two different sliders each frame (not sure if this is necessary but it sure works
+            // attach the two different sliders each frame (not sure if this is necessary but it sure works)
             colorPickerView.attachAlphaSlider(alphaSlider)
             colorPickerView.attachBrightnessSlider(brightnessSlider)
             // update the color tile
@@ -56,7 +58,13 @@ class HomeFragment : Fragment() {
             // update the text displays
             hexCode.text = "#${colorPickerView.colorEnvelope.hexCode}"
             rgbCode.text = "${colorPickerView.colorEnvelope.argb[0]}-${colorPickerView.colorEnvelope.argb[1]}-${colorPickerView.colorEnvelope.argb[2]}-${colorPickerView.colorEnvelope.argb[3]}"
-            sharedViewModel.hexCode = colorPickerView.colorEnvelope.hexCode
+            if (!listenerRan)
+            {
+                listenerRan = true
+                initColor()
+            }
+            // update the value in the Model
+            sharedViewModel.setHex("#" + colorPickerView.colorEnvelope.hexCode)
         })
 
         // handle the copy buttons
@@ -112,6 +120,13 @@ class HomeFragment : Fragment() {
         }
         // -----------------------------------------------------------------------------------------
         return root
+    }
+
+    fun initColor() {
+        val sharedViewModel: SharedViewModel by activityViewModels()
+        val colorPickerView = binding.colorPickerView
+        val color = Color.parseColor(sharedViewModel.getHex())
+        colorPickerView.selectByHsvColor(color)
     }
 
     // actually copy the text to the clipboard
