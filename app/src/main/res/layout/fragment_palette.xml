@@ -7,12 +7,13 @@
     tools:context=".ui.palette.PaletteFragment">
 
     <TextView
-        android:id="@+id/paletteTop"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:id="@+id/paletteBlack"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
         android:layout_marginTop="128dp"
+        android:fontFamily="monospace"
         android:gravity="center_horizontal|bottom"
-        android:text="Lorem Ipsum"
+        android:text="Black Text"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
@@ -22,15 +23,183 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/paletteBottom"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:text="Lorem Ipsum"
+        android:id="@+id/paletteWhite"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:fontFamily="monospace"
+        android:text="White Text"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/paletteTop" />
+        app:layout_constraintTop_toBottomOf="@+id/paletteBlack" />
+
+    <LinearLayout
+        android:id="@+id/lightnessBlackLayout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/paletteWhite">
+
+        <TextView
+            android:id="@+id/blackDarkerColor"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:text="Darker"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/blackStandardColor"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/blackLighterColor"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:text="Lighter"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lightnessWhiteLayout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lightnessBlackLayout">
+
+        <TextView
+            android:id="@+id/whiteDarkerColor"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:gravity="bottom"
+            android:text="Darker"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/whiteStandardColor"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:gravity="bottom"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/whiteLighterColor"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:gravity="bottom"
+            android:text="Lighter"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/complimentaryLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lightnessWhiteLayout">
+
+        <TextView
+            android:id="@+id/defaultComplimentaryColor"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/complimentaryColor"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:text="Complimentary"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/triadicLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/complimentaryLayout" >
+
+        <TextView
+            android:id="@+id/triadicLeftColor"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:text="Triadic"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/triadicDefaultColor"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/triadicRightColor"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:text="Triadic"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24dp" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,7 +30,7 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        // -----------------------------------------------------------------------------------------
+
         // references to each element
         val colorPickerView = binding.colorPickerView
         val alphaSlider = binding.alphaSlider
@@ -42,10 +42,8 @@ class HomeFragment : Fragment() {
         val copyRGB = binding.copyRGB
         val editHexCode = binding.editHexCode
         val applyHexCode = binding.applyHexCode
+        // whether or not the color picker has initialized yet
         var listenerRan = false
-
-//        val color = Color.parseColor(sharedViewModel.getHex())
-//        colorPickerView.selectByHsvColor(color)
 
         // listener that is called each time a new color is selected
         colorPickerView.setColorListener(ColorEnvelopeListener
@@ -58,9 +56,10 @@ class HomeFragment : Fragment() {
             // update the text displays
             hexCode.text = "#${colorPickerView.colorEnvelope.hexCode}"
             rgbCode.text = "${colorPickerView.colorEnvelope.argb[0]}-${colorPickerView.colorEnvelope.argb[1]}-${colorPickerView.colorEnvelope.argb[2]}-${colorPickerView.colorEnvelope.argb[3]}"
+            // if this is the initialization cycle (the picker just got loaded), set the color saved in the ViewModel
             if (!listenerRan)
             {
-                listenerRan = true
+                listenerRan = true // im pretty sure this is the worst way to do this
                 initColor()
             }
             // update the value in the Model
@@ -95,6 +94,7 @@ class HomeFragment : Fragment() {
             else // otherwise, check if it's an RGB code
             {
                 val parts = code.split("-")
+                // differentiate between ARGB and RGB (could probably be done with a similar regex function)
                 if (parts.size == 4)
                 {
                     val alpha = Integer.parseInt(parts[0])
@@ -112,24 +112,21 @@ class HomeFragment : Fragment() {
                     val color = Color.rgb(red, green, blue)
                     colorPickerView.selectByHsvColor(color)
                 }
-                else
-                {
-                    Toast.makeText(context, "bad input", Toast.LENGTH_SHORT).show()
-                }
             }
         }
-        // -----------------------------------------------------------------------------------------
+
         return root
     }
 
-    fun initColor() {
+    // grab the color saved in the ViewModel to save the state of the picker when in the palette fragment
+    private fun initColor() {
         val sharedViewModel: SharedViewModel by activityViewModels()
         val colorPickerView = binding.colorPickerView
         val color = Color.parseColor(sharedViewModel.getHex())
         colorPickerView.selectByHsvColor(color)
     }
 
-    // actually copy the text to the clipboard
+    // copy text to clipboard
     private fun copyTextToClipboard(textToCopy: TextView)
     {
         val textToCopy = textToCopy.text
@@ -138,6 +135,7 @@ class HomeFragment : Fragment() {
         clipboardManager.setPrimaryClip(clipData)
     }
 
+    // destroy the binding variable to not have a memory leak
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
