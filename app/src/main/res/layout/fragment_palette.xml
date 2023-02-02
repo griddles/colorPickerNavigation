@@ -7,12 +7,12 @@
     tools:context=".ui.palette.PaletteFragment">
 
     <TextView
-        android:id="@+id/paletteBlack"
+        android:id="@+id/blackText"
         android:layout_width="fill_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginTop="128dp"
         android:fontFamily="monospace"
-        android:gravity="center_horizontal|bottom"
+        android:gravity="bottom"
         android:text="Black Text"
         android:textAlignment="center"
         android:textColor="#000000"
@@ -23,9 +23,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/paletteWhite"
+        android:id="@+id/whiteText"
         android:layout_width="fill_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:fontFamily="monospace"
         android:text="White Text"
         android:textAlignment="center"
@@ -34,7 +34,40 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/paletteBlack" />
+        app:layout_constraintTop_toBottomOf="@+id/blackText" />
+
+    <TextView
+        android:id="@+id/blackBackground"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:background="#000000"
+        android:fontFamily="monospace"
+        android:gravity="bottom"
+        android:text="Black Background"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/whiteText" />
+
+    <TextView
+        android:id="@+id/whiteBackground"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:background="#FFFFFF"
+        android:fontFamily="monospace"
+        android:text="White Background"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/blackBackground" />
 
     <LinearLayout
         android:id="@+id/lightnessBlackLayout"
@@ -44,7 +77,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/paletteWhite">
+        app:layout_constraintTop_toBottomOf="@+id/whiteBackground">
 
         <TextView
             android:id="@+id/blackDarkerColor"

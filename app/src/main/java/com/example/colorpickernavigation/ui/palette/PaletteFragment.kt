@@ -32,8 +32,10 @@ class PaletteFragment : Fragment() {
 
         val color = Color.parseColor(sharedViewModel.getHex())
         // text visibility
-        binding.paletteBlack.setBackgroundColor(color)
-        binding.paletteWhite.setBackgroundColor(color)
+        binding.blackText.setBackgroundColor(color)
+        binding.whiteText.setBackgroundColor(color)
+        binding.blackBackground.setTextColor(color)
+        binding.whiteBackground.setTextColor(color)
 
         // darker/lighter
         binding.blackDarkerColor.setBackgroundColor(modifyColor(color, 0, 0, -15))
@@ -70,8 +72,10 @@ class PaletteFragment : Fragment() {
                 try
                 {
                     // as far as I can tell you have to set the values here since this doesn't get executed immediately
-                    binding.paletteBlack.text = "Black on " + response.toString().split("\"name\":{\"value\":\"")[1].split("\"")[0]
-                    binding.paletteWhite.text = "White on " + response.toString().split("\"name\":{\"value\":\"")[1].split("\"")[0]
+                    binding.blackText.text = "Black on " + response.toString().split("\"name\":{\"value\":\"")[1].split("\"")[0]
+                    binding.whiteText.text = "White on " + response.toString().split("\"name\":{\"value\":\"")[1].split("\"")[0]
+                    binding.blackBackground.text = response.toString().split("\"name\":{\"value\":\"")[1].split("\"")[0] + " on Black"
+                    binding.whiteBackground.text = response.toString().split("\"name\":{\"value\":\"")[1].split("\"")[0] + " on White"
                 }
                 catch (e: IllegalArgumentException)
                 {
