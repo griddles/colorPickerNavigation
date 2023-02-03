@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Color Picker</string>
-    <string name="title_home">Home</string>
-    <string name="title_palette">Palette</string>
     <string name="black_text">Black Text</string>
     <string name="white_text">White Text</string>
     <string name="black_background">Black Background</string>

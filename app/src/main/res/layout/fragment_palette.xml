@@ -13,7 +13,7 @@
         android:layout_marginTop="128dp"
         android:fontFamily="monospace"
         android:gravity="center_horizontal|bottom"
-        android:text="Black Text"
+        android:text="@string/black_text"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +25,7 @@
         android:layout_width="fill_parent"
         android:layout_height="60dp"
         android:fontFamily="monospace"
-        android:text="White Text"
+        android:text="@string/white_text"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -40,7 +40,7 @@
         android:background="#000000"
         android:fontFamily="monospace"
         android:gravity="center_horizontal|bottom"
-        android:text="Black Background"
+        android:text="@string/black_background"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +54,7 @@
         android:layout_height="60dp"
         android:background="#FFFFFF"
         android:fontFamily="monospace"
-        android:text="White Background"
+        android:text="@string/white_background"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
@@ -79,10 +79,10 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="monospace"
-            android:text="Darker"
+            android:text="@string/darker"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/blackStandardColor"
@@ -92,7 +92,7 @@
             android:fontFamily="monospace"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/blackLighterColor"
@@ -100,10 +100,10 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="monospace"
-            android:text="Lighter"
+            android:text="@string/lighter"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -123,9 +123,9 @@
             android:layout_weight="1"
             android:fontFamily="monospace"
             android:gravity="center_horizontal|bottom"
-            android:text="Darker"
+            android:text="@string/darker"
             android:textColor="#FFFFFF"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/whiteStandardColor"
@@ -135,7 +135,7 @@
             android:fontFamily="monospace"
             android:gravity="center_horizontal|bottom"
             android:textColor="#FFFFFF"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/whiteLighterColor"
@@ -144,9 +144,9 @@
             android:layout_weight="1"
             android:fontFamily="monospace"
             android:gravity="center_horizontal|bottom"
-            android:text="Lighter"
+            android:text="@string/lighter"
             android:textColor="#FFFFFF"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -167,7 +167,7 @@
             android:fontFamily="monospace"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/complimentaryColor"
@@ -175,10 +175,10 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:fontFamily="monospace"
-            android:text="Complimentary"
+            android:text="@string/complimentary"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
 
     </LinearLayout>
 
@@ -199,10 +199,10 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:fontFamily="monospace"
-            android:text="Triadic"
+            android:text="@string/triadic"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/triadicDefaultColor"
@@ -212,7 +212,7 @@
             android:fontFamily="monospace"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/triadicRightColor"
@@ -220,10 +220,10 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:fontFamily="monospace"
-            android:text="Triadic"
+            android:text="@string/triadic"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
