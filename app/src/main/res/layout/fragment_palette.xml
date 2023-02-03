@@ -12,12 +12,10 @@
         android:layout_height="60dp"
         android:layout_marginTop="128dp"
         android:fontFamily="monospace"
-        android:gravity="bottom"
+        android:gravity="center_horizontal|bottom"
         android:text="Black Text"
-        android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,7 +29,6 @@
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/blackText" />
@@ -42,12 +39,10 @@
         android:layout_height="60dp"
         android:background="#000000"
         android:fontFamily="monospace"
-        android:gravity="bottom"
+        android:gravity="center_horizontal|bottom"
         android:text="Black Background"
-        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +58,6 @@
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -128,9 +122,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="monospace"
-            android:gravity="bottom"
+            android:gravity="center_horizontal|bottom"
             android:text="Darker"
-            android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="24dp" />
 
@@ -140,8 +133,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="monospace"
-            android:gravity="bottom"
-            android:textAlignment="center"
+            android:gravity="center_horizontal|bottom"
             android:textColor="#FFFFFF"
             android:textSize="24dp" />
 
@@ -151,9 +143,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="monospace"
-            android:gravity="bottom"
+            android:gravity="center_horizontal|bottom"
             android:text="Lighter"
-            android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="24dp" />
     </LinearLayout>

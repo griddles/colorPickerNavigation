@@ -1,5 +1,6 @@
 package com.example.colorpickernavigation.ui.home
 
+import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -21,6 +22,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -56,11 +58,12 @@ class HomeFragment : Fragment() {
             // update the text displays
             hexCode.text = "#${colorPickerView.colorEnvelope.hexCode}"
             rgbCode.text = "${colorPickerView.colorEnvelope.argb[0]}-${colorPickerView.colorEnvelope.argb[1]}-${colorPickerView.colorEnvelope.argb[2]}-${colorPickerView.colorEnvelope.argb[3]}"
+
             // if this is the initialization cycle (the picker just got loaded), set the color saved in the ViewModel
             if (!listenerRan)
             {
                 listenerRan = true // im pretty sure this is the worst way to do this
-                initColor()
+                initColor() // this causes an error if the picker hasn't been loaded yet, so this is a thing
             }
             // update the value in the Model
             sharedViewModel.setHex("#" + colorPickerView.colorEnvelope.hexCode)
@@ -127,9 +130,9 @@ class HomeFragment : Fragment() {
     }
 
     // copy text to clipboard
-    private fun copyTextToClipboard(textToCopy: TextView)
+    private fun copyTextToClipboard(copyText: TextView)
     {
-        val textToCopy = textToCopy.text
+        val textToCopy = copyText.text
         val clipboardManager = activity?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clipData = ClipData.newPlainText("color", textToCopy)
         clipboardManager.setPrimaryClip(clipData)
