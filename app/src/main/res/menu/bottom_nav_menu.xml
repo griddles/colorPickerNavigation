@@ -11,4 +11,9 @@
         android:icon="@drawable/color_ico"
         android:title="@string/title_palette" />
 
+    <item
+        android:id="@+id/navigation_saved"
+        android:icon="@drawable/color_ico"
+        android:title="@string/title_saved" />
+
 </menu>

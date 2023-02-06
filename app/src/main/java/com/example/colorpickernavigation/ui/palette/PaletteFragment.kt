@@ -69,15 +69,22 @@ class PaletteFragment : Fragment() {
 
         val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
             { response ->
-                // get the string value of the color's name
-                val colorName = response.getJSONObject("name").getString("value")
-                // as far as I can tell you have to set the values here since this doesn't get executed immediately
-                binding.blackText.text = "Black on $colorName"
-                binding.whiteText.text = "White on $colorName"
-                binding.blackBackground.text = "$colorName on Black"
-                binding.whiteBackground.text = "$colorName on White"
+                try
+                {
+                    // get the string value of the color's name
+                    val colorName = response.getJSONObject("name").getString("value")
+                    // as far as I can tell you have to set the values here since this doesn't get executed immediately
+                    binding.blackText.text = "Black on $colorName"
+                    binding.whiteText.text = "White on $colorName"
+                    binding.blackBackground.text = "$colorName on Black"
+                    binding.whiteBackground.text = "$colorName on White"
+                }
+                catch (e: NullPointerException)
+                {
+                    // do nothing
+                }
             },
-            { error ->
+            { e ->
                 // do nothing since error handling is somewhere else
             }
         )

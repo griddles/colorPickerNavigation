@@ -3,6 +3,7 @@
     <string name="app_name">Color Picker</string>
     <string name="title_home">Home</string>
     <string name="title_palette">Palette</string>
+    <string name="title_saved">Saved</string>
     <string name="black_text">Black Text</string>
     <string name="white_text">White Text</string>
     <string name="black_background">Black Background</string>
@@ -15,4 +16,5 @@
     <string name="copy_hex">Copy Hex Value to Clipboard</string>
     <string name="hex_hint">#aarrggbb</string>
     <string name="apply">Apply</string>
+
 </resources>
