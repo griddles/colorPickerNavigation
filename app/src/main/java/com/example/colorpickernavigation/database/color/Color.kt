@@ -1,14 +1,12 @@
 package com.example.colorpickernavigation.database.color
 
-import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import org.jetbrains.annotations.NotNull
 
-class Color {
-    @Entity
-    data class Color(
-        @PrimaryKey val id: Int,
-        @NonNull @ColumnInfo(name = "hex_code") val hexCode: String
-    )
-}
+@Entity(tableName = "colors")
+data class Color(
+    @ColumnInfo @PrimaryKey val id: Int,
+    @ColumnInfo(name = "colors") val color: String
+)

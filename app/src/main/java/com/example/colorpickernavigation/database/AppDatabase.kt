@@ -26,6 +26,7 @@ abstract class AppDatabase: RoomDatabase()
                     .createFromAsset("database/colors.db")
                     .build()
                 INSTANCE = instance
+
                 instance
             }
         }
