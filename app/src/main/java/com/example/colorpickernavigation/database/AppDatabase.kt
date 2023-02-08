@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.colorpickernavigation.database.color.Color
 import com.example.colorpickernavigation.database.color.ColorDao
 
-@Database(entities = arrayOf(Color::class), version = 1)
+@Database(entities = [Color::class], version = 1)
 abstract class AppDatabase: RoomDatabase()
 {
     abstract fun colorDao(): ColorDao
@@ -23,7 +23,8 @@ abstract class AppDatabase: RoomDatabase()
                     context,
                     AppDatabase::class.java,
                     "app_database")
-                    .createFromAsset("database/colors.db")
+                    .createFromAsset("database/colors.sql")
+                    .allowMainThreadQueries()
                     .build()
                 INSTANCE = instance
 
