@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import com.example.colorpickernavigation.ColorApplication
 import com.example.colorpickernavigation.databinding.FragmentSavedBinding
 import com.example.colorpickernavigation.model.SharedViewModel
+import kotlinx.coroutines.flow.single
 
 class SavedFragment : Fragment()
 {
@@ -36,9 +37,6 @@ class SavedFragment : Fragment()
         super.onAttach(context)
 
         val colordb = ColorApplication().getDB(context)
-        //colordb.colorDao().addVal("#123456")
-        //binding.textView.text = colordb.colorDao().getAll().single().toString()
-        val db = colordb.colorDao().getAll()
         val breakpoint = 1
     }
 
