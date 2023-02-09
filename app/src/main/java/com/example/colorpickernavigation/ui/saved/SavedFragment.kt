@@ -1,27 +1,17 @@
 package com.example.colorpickernavigation.ui.saved
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.coroutineScope
 import com.example.colorpickernavigation.ColorApplication
 import com.example.colorpickernavigation.database.color.Color
 import com.example.colorpickernavigation.database.color.ColorDao
 import com.example.colorpickernavigation.databinding.FragmentSavedBinding
 import com.example.colorpickernavigation.model.ColorViewModel
 import com.example.colorpickernavigation.model.SharedViewModel
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.count
-import kotlinx.coroutines.flow.toCollection
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 class SavedFragment : Fragment()
 {
@@ -37,25 +27,31 @@ class SavedFragment : Fragment()
     ): View {
         val sharedViewModel: SharedViewModel by activityViewModels()
 
-
+        // initialize binding
         _binding = FragmentSavedBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        // grab the current color value from the viewmodel in string form and in int form
         val colorString = sharedViewModel.getHex()
         val colorInt = android.graphics.Color.parseColor(colorString)
 
+        // update the binding button with the current color and text that adapts to always be readable
         binding.addButt.setBackgroundColor(colorInt)
         binding.addButt.setTextColor(textVisible(colorInt))
 
+        // get the database from the DAO
         colordb = ColorApplication().getDB(requireContext()).colorDao()
-
         val colorViewModel = ColorViewModel(colordb)
 
         binding.addButt.setOnClickListener()
         {
+            // get all the colors from the database
             val colors = colorViewModel.getColors()
+            // add a new color at the next index value
             colordb.addColor(Color(colors.count(), colorString))
         }
+
+        // TODO: display the colors in a recyclerview maybe
 
         return root
     }

@@ -1,13 +1,11 @@
 package com.example.colorpickernavigation.database.color
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import kotlinx.coroutines.flow.Flow
 
+// the DAO that handles database queries and other operations
 @Dao
 interface ColorDao {
     @Query("SELECT * FROM colors")
