@@ -52,14 +52,20 @@ class SavedFragment : Fragment()
             // get all the colors from the database
             val colors = colorViewModel.getColors()
             // add a new color at the next index value
-            colordb.addColor(Color(colors.count(), colorString))
+            colordb.addColor(Color(null, colorString))
+
+            refresh()
         }
 
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = RecyclerAdapter(colordb.getAll(), sharedViewModel, binding.addButt)
+        recyclerView.adapter = RecyclerAdapter(colordb.getAll(), sharedViewModel, colordb)
 
         return root
     }
 
-
+    fun refresh()
+    {
+        parentFragmentManager.beginTransaction().detach(this).commitNow();
+        parentFragmentManager.beginTransaction().attach(this).commitNow();
+    }
 }
