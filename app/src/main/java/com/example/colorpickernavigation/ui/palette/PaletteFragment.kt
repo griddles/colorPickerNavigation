@@ -38,21 +38,21 @@ class PaletteFragment : Fragment() {
         binding.whiteBackground.setTextColor(color)
 
         // darker/lighter
-        binding.blackDarkerColor.setBackgroundColor(modifyColor(color, 0, 0, -15))
+        binding.blackDarkerColor.setBackgroundColor(sharedViewModel.modifyColor(color, 0, 0, -15))
         binding.blackStandardColor.setBackgroundColor(color)
-        binding.blackLighterColor.setBackgroundColor(modifyColor(color, 0, 0, 15))
-        binding.whiteDarkerColor.setBackgroundColor(modifyColor(color, 0, 0, -15))
+        binding.blackLighterColor.setBackgroundColor(sharedViewModel.modifyColor(color, 0, 0, 15))
+        binding.whiteDarkerColor.setBackgroundColor(sharedViewModel.modifyColor(color, 0, 0, -15))
         binding.whiteStandardColor.setBackgroundColor(color)
-        binding.whiteLighterColor.setBackgroundColor(modifyColor(color, 0, 0, 15))
+        binding.whiteLighterColor.setBackgroundColor(sharedViewModel.modifyColor(color, 0, 0, 15))
 
         // complimentary
         binding.defaultComplimentaryColor.setBackgroundColor(color)
-        binding.complimentaryColor.setBackgroundColor(modifyColor(color, 180, 0, 0))
+        binding.complimentaryColor.setBackgroundColor(sharedViewModel.modifyColor(color, 180, 0, 0))
 
         // triadic
-        binding.triadicLeftColor.setBackgroundColor(modifyColor(color, -120, 0, 0))
+        binding.triadicLeftColor.setBackgroundColor(sharedViewModel.modifyColor(color, -120, 0, 0))
         binding.triadicDefaultColor.setBackgroundColor(color)
-        binding.triadicRightColor.setBackgroundColor(modifyColor(color, 120, 0, 0))
+        binding.triadicRightColor.setBackgroundColor(sharedViewModel.modifyColor(color, 120, 0, 0))
 
         // make the API call to get the name of the color
         run("https://www.thecolorapi.com/id?hex=${sharedViewModel.getHex().drop(3)}")
@@ -91,53 +91,6 @@ class PaletteFragment : Fragment() {
 
         // execute the request
         queue.add(jsonObjectRequest)
-    }
-
-    private fun modifyColor(color: Int, hueChange: Int, satChange: Int, lightChange: Int): Int
-    {
-        // it's telling me that this doesn't change, it does lmao
-        var hsv:FloatArray = floatArrayOf(0F, 0F, 0F)
-        Color.colorToHSV(color, hsv)
-
-        // new values for each part because editing the hsv array is illegal apparently
-        var newHue = hsv[0] + hueChange
-        var newSat = hsv[1] + (satChange.toFloat() / 100)
-        var newLight = hsv[2] + (lightChange.toFloat() / 100)
-
-        // check the hue value
-        if (newHue > 360)
-        {
-            newHue -= 360
-        }
-        if (newHue < 0)
-        {
-            newHue += 360
-        }
-        // check the lightness value first because it can affect saturation
-        if (newLight > 1F)
-        {
-            newLight = 1F
-            newSat -= (lightChange.toFloat() / 100) // decreasing saturation appears to increase lightness when lightness is already at 100%
-            // this isn't perfect since if lightness is at 86%, it'll set the new value to more than 100%, triggering this which then decreases
-            // saturation by 15%, resulting in an effective ~29% lightness increase. It doesn't appear to be a noticeable difference, but it exists.
-        }
-        if (newLight < 0F)
-        {
-            newLight = 0F
-        }
-        // calculate the new saturation value
-        if (newSat > 1F)
-        {
-            newSat = 1F
-        }
-        if (newSat < 0F)
-        {
-            newSat = 0F
-        }
-
-        // return the new color value
-        val out:FloatArray = floatArrayOf(newHue, newSat, newLight)
-        return Color.HSVToColor(out)
     }
 
     override fun onDestroyView() {

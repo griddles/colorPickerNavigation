@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.colorpickernavigation.ColorApplication
+import com.example.colorpickernavigation.RecyclerAdapter
 import com.example.colorpickernavigation.database.color.Color
 import com.example.colorpickernavigation.database.color.ColorDao
 import com.example.colorpickernavigation.databinding.FragmentSavedBinding
@@ -31,13 +33,15 @@ class SavedFragment : Fragment()
         _binding = FragmentSavedBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        val recyclerView = binding.recyclerView
+
         // grab the current color value from the viewmodel in string form and in int form
         val colorString = sharedViewModel.getHex()
         val colorInt = android.graphics.Color.parseColor(colorString)
 
         // update the binding button with the current color and text that adapts to always be readable
         binding.addButt.setBackgroundColor(colorInt)
-        binding.addButt.setTextColor(textVisible(colorInt))
+        binding.addButt.setTextColor(sharedViewModel.textVisible(colorInt))
 
         // get the database from the DAO
         colordb = ColorApplication().getDB(requireContext()).colorDao()
@@ -51,34 +55,11 @@ class SavedFragment : Fragment()
             colordb.addColor(Color(colors.count(), colorString))
         }
 
-        // TODO: display the colors in a recyclerview maybe
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = RecyclerAdapter(colordb.getAll(), sharedViewModel, binding.addButt)
 
         return root
     }
 
-    private fun textVisible(color: Int): Int
-    {
-        // it's telling me that this doesn't change, it does lmao
-        var hsv:FloatArray = floatArrayOf(0F, 0F, 0F)
-        android.graphics.Color.colorToHSV(color, hsv)
 
-        // new values for each part because editing the hsv array is illegal apparently
-        var newHue = 0F
-        var newSat = 0F
-        var newLight = 0F
-
-        // check the hue value (the sat and light values can't be invalid
-        if (hsv[2] > 0.5)
-        {
-            newLight = 0F
-        }
-        else
-        {
-            newLight = 1F
-        }
-
-        // return the new color value
-        val out:FloatArray = floatArrayOf(newHue, newSat, newLight)
-        return android.graphics.Color.HSVToColor(out)
-    }
 }
