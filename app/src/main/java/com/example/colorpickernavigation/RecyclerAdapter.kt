@@ -50,9 +50,9 @@ class RecyclerAdapter(var colorList: List<Color>, val sharedViewModel: SharedVie
 
     class viewHolder (itemView: View): RecyclerView.ViewHolder(itemView)
     {
-        val colorText = itemView.findViewById<TextView>(R.id.colorText)
-        val deleteButton = itemView.findViewById<ImageView>(R.id.deleteButton)
-        var addButt = itemView.findViewById<Button>(R.id.addButt)
+        val colorText: TextView = itemView.findViewById<TextView>(R.id.colorText)
+        val deleteButton: ImageView = itemView.findViewById<ImageView>(R.id.deleteButton)
+        var addButt: Button = itemView.findViewById<Button>(R.id.addButt)
     }
 }
 
