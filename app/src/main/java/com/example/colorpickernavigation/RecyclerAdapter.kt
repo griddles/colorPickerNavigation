@@ -3,15 +3,15 @@ package com.example.colorpickernavigation
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.colorpickernavigation.database.color.Color
 import com.example.colorpickernavigation.database.color.ColorDao
 import com.example.colorpickernavigation.model.SharedViewModel
+import com.example.colorpickernavigation.ui.saved.SavedFragment
 
-class RecyclerAdapter(var colorList: List<Color>, val sharedViewModel: SharedViewModel, val colorDao: ColorDao): RecyclerView.Adapter<RecyclerAdapter.viewHolder>()
+class RecyclerAdapter(var colorList: List<Color>, val sharedViewModel: SharedViewModel, val colorDao: ColorDao, val fragment: SavedFragment): RecyclerView.Adapter<RecyclerAdapter.viewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder
     {
@@ -33,13 +33,13 @@ class RecyclerAdapter(var colorList: List<Color>, val sharedViewModel: SharedVie
         holder.colorText.setOnClickListener()
         {
             sharedViewModel.setHex(colorString)
-            holder.addButt.setBackgroundColor(colorInt)
-            holder.addButt.setTextColor(sharedViewModel.textVisible(colorInt))
+            fragment.refresh()
         }
 
         holder.deleteButton.setOnClickListener()
         {
             colorDao.remove(colorList[position])
+            fragment.refresh()
         }
     }
 
@@ -52,7 +52,6 @@ class RecyclerAdapter(var colorList: List<Color>, val sharedViewModel: SharedVie
     {
         val colorText: TextView = itemView.findViewById<TextView>(R.id.colorText)
         val deleteButton: ImageView = itemView.findViewById<ImageView>(R.id.deleteButton)
-        var addButt: Button = itemView.findViewById<Button>(R.id.addButt)
     }
 }
 

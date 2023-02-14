@@ -1,11 +1,13 @@
 package com.example.colorpickernavigation.ui.home
 
 import android.annotation.SuppressLint
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
+import android.app.Activity.RESULT_OK
+import android.content.*
 import android.graphics.Color
+import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,11 +18,15 @@ import androidx.fragment.app.activityViewModels
 import com.example.colorpickernavigation.databinding.FragmentHomeBinding
 import com.example.colorpickernavigation.model.SharedViewModel
 import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
+import java.io.InputStream
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
+    val pickImage = 100
+    lateinit var imageUri: Uri
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -44,6 +50,7 @@ class HomeFragment : Fragment() {
         val copyRGB = binding.copyRGB
         val editHexCode = binding.editHexCode
         val applyHexCode = binding.applyHexCode
+        val cameraButton = binding.cameraButton
         // whether or not the color picker has initialized yet
         var listenerRan = false
 
@@ -79,6 +86,12 @@ class HomeFragment : Fragment() {
         {
             copyTextToClipboard(rgbCode)
             Toast.makeText(context, "Copied RGB to Clipboard!", Toast.LENGTH_SHORT).show()
+        }
+
+        cameraButton.setOnClickListener()
+        {
+            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            startActivityForResult(gallery, pickImage) // deprecated :)
         }
 
         // handle the apply color button
@@ -136,6 +149,19 @@ class HomeFragment : Fragment() {
         val clipboardManager = activity?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clipData = ClipData.newPlainText("color", textToCopy)
         clipboardManager.setPrimaryClip(clipData)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        // super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK && requestCode == pickImage) {
+            imageUri = data?.data!!
+            var drawable: Drawable
+            val contentResolver = requireContext().contentResolver
+            val inputStream: InputStream? = contentResolver.openInputStream(imageUri)
+            drawable = Drawable.createFromStream(inputStream, imageUri.toString())!!
+
+            binding.colorPickerView.setPaletteDrawable(drawable)
+        }
     }
 
     // destroy the binding variable to not have a memory leak

@@ -39,7 +39,6 @@ class SavedFragment : Fragment()
         val colorString = sharedViewModel.getHex()
         val colorInt = android.graphics.Color.parseColor(colorString)
 
-        // update the binding button with the current color and text that adapts to always be readable
         binding.addButt.setBackgroundColor(colorInt)
         binding.addButt.setTextColor(sharedViewModel.textVisible(colorInt))
 
@@ -49,8 +48,6 @@ class SavedFragment : Fragment()
 
         binding.addButt.setOnClickListener()
         {
-            // get all the colors from the database
-            val colors = colorViewModel.getColors()
             // add a new color at the next index value
             colordb.addColor(Color(null, colorString))
 
@@ -58,7 +55,7 @@ class SavedFragment : Fragment()
         }
 
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = RecyclerAdapter(colordb.getAll(), sharedViewModel, colordb)
+        recyclerView.adapter = RecyclerAdapter(colordb.getAll(), sharedViewModel, colordb, this)
 
         return root
     }

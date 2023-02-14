@@ -13,7 +13,7 @@
 
     <item
         android:id="@+id/navigation_saved"
-        android:icon="@drawable/color_ico"
+        android:icon="@drawable/save_ico"
         android:title="@string/title_saved" />
 
 </menu>
