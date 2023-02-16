@@ -65,4 +65,9 @@ class SavedFragment : Fragment()
         parentFragmentManager.beginTransaction().detach(this).commitNow();
         parentFragmentManager.beginTransaction().attach(this).commitNow();
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

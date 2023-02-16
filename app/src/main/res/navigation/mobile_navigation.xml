@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/navigation_saved"
         android:name="com.example.colorpickernavigation.ui.saved.SavedFragment"
-        android:label="Saved Palettes"
+        android:label="@string/title_saved"
         tools:layout="@layout/fragment_saved" />
 
 </navigation>

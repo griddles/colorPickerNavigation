@@ -20,7 +20,7 @@ class SharedViewModel: ViewModel() {
     {
         // it's telling me that this doesn't change, it does lmao
         var hsv:FloatArray = floatArrayOf(0F, 0F, 0F)
-        android.graphics.Color.colorToHSV(color, hsv)
+        Color.colorToHSV(color, hsv)
 
         // new values for each part because editing the hsv array is illegal apparently
         var newHue = 0F
