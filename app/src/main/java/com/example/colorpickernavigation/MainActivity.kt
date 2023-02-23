@@ -9,43 +9,32 @@ package com.example.colorpickernavigation
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.colorpickernavigation.databinding.ActivityMainBinding
 import com.example.colorpickernavigation.databinding.AppBarMainBinding
-import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    // real main activity binding
     private lateinit var binding: AppBarMainBinding
 
-    // fake main activity binding
-    private lateinit var finding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         //supportActionBar?.hide()
 
-        // setting up the bottom navigation bar
         binding = AppBarMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val bottomNavView: BottomNavigationView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_saved))
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        bottomNavView.setupWithNavController(navController)
 
-        // setting up the side navigation bar
-//        finding = ActivityMainBinding.inflate(layoutInflater)
-//        setContentView(finding.root)
-//        val drawerLayout: DrawerLayout = finding.drawerLayout
-//        val navView: NavigationView = finding.navView
-//        val sideBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_saved), drawerLayout)
-//        setupActionBarWithNavController(navController, sideBarConfiguration)
-//        navView.setupWithNavController(navController)
+        val navView: BottomNavigationView = binding.navView
+
+        // initialize navigation
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.navigation_home, R.id.navigation_dashboard)
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
     }
 }
