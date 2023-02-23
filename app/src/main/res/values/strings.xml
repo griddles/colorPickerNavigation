@@ -4,6 +4,7 @@
     <string name="title_home">Home</string>
     <string name="title_palette">Palette</string>
     <string name="title_saved">Saved</string>
+    <string name="title_login">Login</string>
     <string name="black_text">Black Text</string>
     <string name="white_text">White Text</string>
     <string name="black_background">Black Background</string>

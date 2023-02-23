@@ -21,7 +21,7 @@
         android:label="@string/title_saved"
         tools:layout="@layout/fragment_saved" />
     <fragment
-        android:id="@+id/loginFragment"
+        android:id="@+id/navigation_login"
         android:name="com.example.colorpickernavigation.ui.login.LoginFragment"
         android:label="LoginFragment" />
 

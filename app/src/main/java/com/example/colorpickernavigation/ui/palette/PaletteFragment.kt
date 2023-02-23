@@ -14,8 +14,8 @@ import com.android.volley.toolbox.Volley
 import com.example.colorpickernavigation.databinding.FragmentPaletteBinding
 import com.example.colorpickernavigation.model.SharedViewModel
 
-class PaletteFragment : Fragment() {
-
+class PaletteFragment : Fragment()
+{
     private var _binding: FragmentPaletteBinding? = null
     private val binding get() = _binding!!
 
