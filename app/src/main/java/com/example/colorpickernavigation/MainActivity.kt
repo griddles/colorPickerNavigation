@@ -7,7 +7,6 @@ Color Picker
 package com.example.colorpickernavigation
 
 import android.os.Bundle
-import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -36,8 +35,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val bottomNavView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_saved, R.id.navigation_login))
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_saved))
         setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNavView.setupWithNavController(navController)
+
+        // setting up the side navigation bar
+//        finding = ActivityMainBinding.inflate(layoutInflater)
+//        setContentView(finding.root)
+//        val drawerLayout: DrawerLayout = finding.drawerLayout
+//        val navView: NavigationView = finding.navView
+//        val sideBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_saved), drawerLayout)
+//        setupActionBarWithNavController(navController, sideBarConfiguration)
+//        navView.setupWithNavController(navController)
     }
 }
