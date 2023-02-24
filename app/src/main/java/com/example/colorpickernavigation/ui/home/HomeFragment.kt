@@ -70,9 +70,9 @@ class HomeFragment : Fragment() {
             if (!listenerRan)
             {
                 listenerRan = true // im pretty sure this is the worst way to do this
-                initColor() // this causes an error if the picker hasn't been loaded yet, so this is a thing
+                initColor() // function this causes an error if the picker hasn't been loaded yet, so this is a thing
             }
-            // update the value in the Model
+            // update the value in the model
             sharedViewModel.setHex("#" + colorPickerView.colorEnvelope.hexCode)
         })
 
