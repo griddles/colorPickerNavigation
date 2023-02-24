@@ -32,9 +32,14 @@ class MainActivity : AppCompatActivity() {
         // initialize navigation
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         val appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.navigation_home, R.id.navigation_dashboard)
+            setOf(R.id.navigation_home, R.id.navigation_palette, R.id.navigation_saved, R.id.navigation_login)
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    fun hideLoginButton()
+    {
+        binding.navView.menu.removeItem(R.id.navigation_login)
     }
 }

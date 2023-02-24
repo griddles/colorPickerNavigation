@@ -6,12 +6,12 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.colorpickernavigation.database.color.Color
 import com.example.colorpickernavigation.database.color.ColorDao
+import com.example.colorpickernavigation.database.login.Login
+import com.example.colorpickernavigation.database.login.LoginDao
 
-@Database(entities = [Color::class], version = 1)
+@Database(entities = [Color::class, Login::class], version = 1)
 abstract class AppDatabase: RoomDatabase()
 {
-    abstract fun colorDao(): ColorDao
-
     companion object
     {
         @Volatile
@@ -33,4 +33,7 @@ abstract class AppDatabase: RoomDatabase()
             }
         }
     }
+
+    abstract fun colorDao(): ColorDao
+    abstract fun loginDao(): LoginDao
 }

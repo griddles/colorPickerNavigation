@@ -44,7 +44,6 @@ class SavedFragment : Fragment()
 
         // get the database from the DAO
         colordb = ColorApplication().getDB(requireContext()).colorDao()
-        val colorViewModel = ColorViewModel(colordb)
 
         binding.addButt.setOnClickListener()
         {
