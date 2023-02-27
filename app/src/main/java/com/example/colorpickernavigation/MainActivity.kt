@@ -32,14 +32,23 @@ class MainActivity : AppCompatActivity() {
         // initialize navigation
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         val appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.navigation_home, R.id.navigation_palette, R.id.navigation_saved, R.id.navigation_login)
+            setOf(R.id.navigation_home, R.id.navigation_palette, R.id.navigation_saved, R.id.navigation_login, R.id.navigation_logout)
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        binding.navView.menu.getItem(4).isVisible = false
     }
 
     fun hideLoginButton()
     {
-        binding.navView.menu.removeItem(R.id.navigation_login)
+        binding.navView.menu.getItem(3).isVisible = false
+        binding.navView.menu.getItem(4).isVisible = true
+    }
+
+    fun showLoginButton()
+    {
+        binding.navView.menu.getItem(3).isVisible = true
+        binding.navView.menu.getItem(4).isVisible = false
     }
 }

@@ -13,6 +13,8 @@ import com.example.colorpickernavigation.ui.saved.SavedFragment
 
 class RecyclerAdapter(var colorList: List<Color>, val sharedViewModel: SharedViewModel, val colorDao: ColorDao, val fragment: SavedFragment): RecyclerView.Adapter<RecyclerAdapter.viewHolder>()
 {
+    var offset = 0
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder
     {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.color_item, parent, false)
@@ -21,7 +23,19 @@ class RecyclerAdapter(var colorList: List<Color>, val sharedViewModel: SharedVie
 
     override fun onBindViewHolder(holder: viewHolder, position: Int)
     {
-        val colorString = colorList[position].color
+        var valid = false
+        while (!valid)
+        {
+            if (colorList[position + offset].uid == sharedViewModel.currentUid)
+            {
+                valid = true
+            }
+            else
+            {
+                offset++
+            }
+        }
+        val colorString = colorList[position + offset].color
         holder.colorText.text = colorString
         val colorInt = android.graphics.Color.parseColor(colorString)
         holder.colorText.setBackgroundColor(colorInt)
@@ -32,7 +46,7 @@ class RecyclerAdapter(var colorList: List<Color>, val sharedViewModel: SharedVie
 
         holder.colorText.setOnClickListener()
         {
-            sharedViewModel.setHex(colorString)
+            sharedViewModel.hexCode = colorString
             fragment.refresh()
         }
 
@@ -45,7 +59,15 @@ class RecyclerAdapter(var colorList: List<Color>, val sharedViewModel: SharedVie
 
     override fun getItemCount(): Int
     {
-        return colorList.size
+        var size = 0
+        for (color in colorList)
+        {
+            if (color.uid == sharedViewModel.currentUid)
+            {
+                size++
+            }
+        }
+        return size
     }
 
     class viewHolder (itemView: View): RecyclerView.ViewHolder(itemView)

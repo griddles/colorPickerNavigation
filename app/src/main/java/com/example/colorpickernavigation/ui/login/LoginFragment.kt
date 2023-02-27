@@ -43,6 +43,7 @@ class LoginFragment : Fragment()
             {
                 Toast.makeText(this.context, "Successfully Logged In!", Toast.LENGTH_SHORT).show()
                 mainActivity!!.hideLoginButton()
+                sharedViewModel.currentUid = usernameInput.text.toString()
                 findNavController().navigate(R.id.navigation_home)
             }
             else
@@ -54,7 +55,6 @@ class LoginFragment : Fragment()
         registerButton.setOnClickListener()
         {
             createLogin(usernameInput.text.toString(), passwordInput.text.toString())
-            Toast.makeText(this.context, "Created Account!", Toast.LENGTH_SHORT).show()
         }
 
         return root
@@ -93,5 +93,7 @@ class LoginFragment : Fragment()
 
         val logindb = ColorApplication().getDB(requireContext()).loginDao()
         logindb.addLogin(Login(null, username, password))
+
+        Toast.makeText(this.context, "Created Account!", Toast.LENGTH_SHORT).show()
     }
 }

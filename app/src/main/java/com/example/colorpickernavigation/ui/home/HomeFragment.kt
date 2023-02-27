@@ -73,7 +73,7 @@ class HomeFragment : Fragment() {
                 initColor() // function this causes an error if the picker hasn't been loaded yet, so this is a thing
             }
             // update the value in the model
-            sharedViewModel.setHex("#" + colorPickerView.colorEnvelope.hexCode)
+            sharedViewModel.hexCode = "#" + colorPickerView.colorEnvelope.hexCode
         })
 
         // handle the copy buttons
@@ -138,7 +138,7 @@ class HomeFragment : Fragment() {
     private fun initColor() {
         val sharedViewModel: SharedViewModel by activityViewModels()
         val colorPickerView = binding.colorPickerView
-        val color = Color.parseColor(sharedViewModel.getHex())
+        val color = Color.parseColor(sharedViewModel.hexCode)
         colorPickerView.selectByHsvColor(color)
     }
 

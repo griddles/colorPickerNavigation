@@ -4,17 +4,8 @@ import android.graphics.Color
 import androidx.lifecycle.ViewModel
 
 class SharedViewModel: ViewModel() {
-    private var hexCode: String = "#FFFFFFFF"
-
-    // getters and setters because reasons
-    fun setHex(hex: String)
-    {
-        hexCode = hex
-    }
-    fun getHex(): String
-    {
-        return hexCode
-    }
+    var hexCode: String = "#FFFFFFFF"
+    var currentUid: String? = null
 
     fun textVisible(color: Int): Int
     {

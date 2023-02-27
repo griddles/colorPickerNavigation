@@ -12,7 +12,6 @@ import com.example.colorpickernavigation.RecyclerAdapter
 import com.example.colorpickernavigation.database.color.Color
 import com.example.colorpickernavigation.database.color.ColorDao
 import com.example.colorpickernavigation.databinding.FragmentSavedBinding
-import com.example.colorpickernavigation.model.ColorViewModel
 import com.example.colorpickernavigation.model.SharedViewModel
 
 class SavedFragment : Fragment()
@@ -36,7 +35,7 @@ class SavedFragment : Fragment()
         val recyclerView = binding.recyclerView
 
         // grab the current color value from the viewmodel in string form and in int form
-        val colorString = sharedViewModel.getHex()
+        val colorString = sharedViewModel.hexCode
         val colorInt = android.graphics.Color.parseColor(colorString)
 
         binding.addButt.setBackgroundColor(colorInt)
@@ -48,7 +47,7 @@ class SavedFragment : Fragment()
         binding.addButt.setOnClickListener()
         {
             // add a new color at the next index value
-            colordb.addColor(Color(null, colorString))
+            colordb.addColor(Color(null, colorString, sharedViewModel.currentUid!!))
 
             refresh()
         }

@@ -21,4 +21,9 @@
         android:icon="@drawable/login_ico"
         android:title="@string/title_login" />
 
+    <item
+        android:id="@+id/navigation_logout"
+        android:icon="@drawable/logout_ico"
+        android:title="@string/title_logout" />
+
 </menu>

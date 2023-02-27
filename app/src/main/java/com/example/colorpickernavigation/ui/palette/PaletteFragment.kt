@@ -30,7 +30,7 @@ class PaletteFragment : Fragment() {
         val root: View = binding.root
         // -----------------------------------------------------------------------------------------
 
-        val color = Color.parseColor(sharedViewModel.getHex())
+        val color = Color.parseColor(sharedViewModel.hexCode)
         // text visibility
         binding.blackText.setBackgroundColor(color)
         binding.whiteText.setBackgroundColor(color)
@@ -55,7 +55,7 @@ class PaletteFragment : Fragment() {
         binding.triadicRightColor.setBackgroundColor(sharedViewModel.modifyColor(color, 120, 0, 0))
 
         // make the API call to get the name of the color
-        run("https://www.thecolorapi.com/id?hex=${sharedViewModel.getHex().drop(3)}")
+        run("https://www.thecolorapi.com/id?hex=${sharedViewModel.hexCode.drop(3)}")
 
         // -----------------------------------------------------------------------------------------
         return root
