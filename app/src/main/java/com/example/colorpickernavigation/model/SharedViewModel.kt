@@ -4,7 +4,9 @@ import android.graphics.Color
 import androidx.lifecycle.ViewModel
 
 class SharedViewModel: ViewModel() {
+    // the current color code for semi-persistence
     var hexCode: String = "#FFFFFFFF"
+    // the current logged in user
     var currentUid: String? = null
 
     fun textVisible(color: Int): Int

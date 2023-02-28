@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        binding.navView.menu.getItem(4).isVisible = false
+        navView.menu.getItem(4).isVisible = false
     }
 
     fun hideLoginButton()

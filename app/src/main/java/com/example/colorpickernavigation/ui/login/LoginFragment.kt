@@ -18,6 +18,7 @@ import com.example.colorpickernavigation.model.SharedViewModel
 
 class LoginFragment : Fragment()
 {
+    // set up binding
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
@@ -30,20 +31,27 @@ class LoginFragment : Fragment()
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        // set up the different inputs and buttons
         val loginButton = binding.loginButton
         val registerButton = binding.registerButton
         val usernameInput = binding.usernameInput
         val passwordInput = binding.passwordInput
 
+        // grab the main activity so that we can modify the bottom nav bar
         val mainActivity = activity as MainActivity?
 
+        // handle the login button
         loginButton.setOnClickListener()
         {
+            // check the login and then login, with feedback to the user
             if (checkLogin(usernameInput.text.toString(), passwordInput.text.toString()))
             {
                 Toast.makeText(this.context, "Successfully Logged In!", Toast.LENGTH_SHORT).show()
+                // hide the login button and show the logout button (mildly busted, dunno why)
                 mainActivity!!.hideLoginButton()
+                // set the current userID so that we know we're logged in
                 sharedViewModel.currentUid = usernameInput.text.toString()
+                // go home
                 findNavController().navigate(R.id.navigation_home)
             }
             else
@@ -52,6 +60,7 @@ class LoginFragment : Fragment()
             }
         }
 
+        // make a new account (easy)
         registerButton.setOnClickListener()
         {
             createLogin(usernameInput.text.toString(), passwordInput.text.toString())
