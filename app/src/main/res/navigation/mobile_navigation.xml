@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.colorpickernavigation.ui.home.HomeFragment"
-        android:label="Home: Thaddeus Reimer"
+        android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/navigation_palette"
