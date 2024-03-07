@@ -11,14 +11,24 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_palette"
         android:name="com.example.colorpickernavigation.ui.palette.PaletteFragment"
         android:label="@string/title_palette"
         tools:layout="@layout/fragment_palette" />
     <fragment
         android:id="@+id/navigation_saved"
         android:name="com.example.colorpickernavigation.ui.saved.SavedFragment"
-        android:label="Saved Palettes"
+        android:label="@string/title_saved"
         tools:layout="@layout/fragment_saved" />
+    <fragment
+        android:id="@+id/navigation_login"
+        android:name="com.example.colorpickernavigation.ui.login.LoginFragment"
+        android:label="@string/title_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/navigation_logout"
+        android:name="com.example.colorpickernavigation.ui.logout.LogoutFragment"
+        android:label="@string/title_logout"
+        tools:layout="@layout/fragment_logout" />
 
 </navigation>

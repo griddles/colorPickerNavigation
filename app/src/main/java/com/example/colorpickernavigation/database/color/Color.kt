@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 // a sort of object used for the database
 @Entity(tableName = "colors")
 data class Color(
-    @ColumnInfo @PrimaryKey val id: Int?,
-    @ColumnInfo(name = "color") val color: String
+    @ColumnInfo @PrimaryKey(autoGenerate = true) val id: Int?,
+    @ColumnInfo(name = "color") val color: String,
+    @ColumnInfo(name = "uid") val uid: String
 )

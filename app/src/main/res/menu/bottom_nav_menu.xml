@@ -7,7 +7,7 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_palette"
         android:icon="@drawable/color_ico"
         android:title="@string/title_palette" />
 
@@ -15,8 +15,24 @@
         android:id="@+id/navigation_saved"
         android:checkable="false"
         android:enabled="false"
-        android:icon="@drawable/color_ico"
-        android:title="@string/title_saved"
+        android:visible="false" />
+        android:icon="@drawable/save_ico"
+        android:title="@string/title_saved" />
+
+    <item
+        android:id="@+id/navigation_login"
+        android:checkable="false"
+        android:enabled="false"
+        android:icon="@drawable/login_ico"
+        android:title="@string/title_login"
+        android:visible="false" />
+
+    <item
+        android:id="@+id/navigation_logout"
+        android:checkable="false"
+        android:enabled="false"
+        android:icon="@drawable/logout_ico"
+        android:title="@string/title_logout"
         android:visible="false" />
 
 </menu>

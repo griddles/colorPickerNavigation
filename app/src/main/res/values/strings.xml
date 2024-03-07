@@ -4,6 +4,8 @@
     <string name="title_home">Home</string>
     <string name="title_palette">Palette</string>
     <string name="title_saved">Saved</string>
+    <string name="title_login">Login</string>
+    <string name="title_logout">Logout</string>
     <string name="black_text">Black Text</string>
     <string name="white_text">White Text</string>
     <string name="black_background">Black Background</string>
@@ -16,5 +18,7 @@
     <string name="copy_hex">Copy Hex Value to Clipboard</string>
     <string name="hex_hint">#aarrggbb</string>
     <string name="apply">Apply</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
